@@ -1,0 +1,257 @@
+html {
+	box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
+body {
+	font-family: 'Arimo', sans-serif;
+	min-width: 320px;
+	height: 100dvh;
+	font-weight: 400;
+	font-size: 20px;
+	background-color: #000;
+	color: #fff;
+	overflow: hidden;
+}
+
+input {
+	width: 100%;
+	height: 100%;
+	border: none;
+	outline: none;
+	font-family: 'Arimo', sans-serif;
+}
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+}
+input[type='number'],
+input[type='number']:hover,
+input[type='number']:focus {
+	appearance: none;
+	-moz-appearance: textfield;
+}
+
+button {
+	background-color: transparent;
+	border: none;
+	outline: none;
+	font-family: 'Inter', sans-serif;
+	cursor: pointer;
+}
+
+.films-app {
+	padding-top: 50px;
+}
+
+.container {
+	max-width: 1180px;
+	padding: 0 15px;
+	margin: 0 auto;
+}
+
+.films-app__titles-inner {
+	padding: 0 75px;
+}
+
+.films-app__title {
+	display: inline-block;
+	margin-bottom: 15px;
+	padding: 10px 25px;
+	background-color: #6532f8;
+	border-radius: 200px;
+	font-size: 15px;
+}
+
+.films-app__desc {
+	margin-bottom: 45px;
+	font-size: 120px;
+}
+
+.films-app__list-inner {
+	height: 1000px;
+	padding: 60px 75px 0;
+	border-radius: 20px;
+	background: url('resources/list-background.png') top/cover no-repeat;
+}
+
+.films-app__form {
+	margin-bottom: 40px;
+}
+
+/* ! ФОРМА */
+.form {
+	max-width: 500px;
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+
+.form__label {
+	width: 100%;
+	max-width: 411px;
+}
+
+.form__input {
+	width: 100%;
+	height: 52px;
+	background-color: transparent;
+	color: #fff;
+	border: none;
+	border-bottom: 1px solid rgba(243, 246, 249, 0.5);
+	font-size: 30px;
+	transition: border-color 0.3s ease-in-out;
+}
+@media (any-hover: hover) {
+	.form__input:hover {
+		border-color: #fff;
+	}
+	.form__input:hover::placeholder {
+		color: #fff;
+	}
+}
+.form__input:focus {
+	border-color: #6532f8;
+}
+.form__input::placeholder {
+	color: rgba(243, 246, 249, 0.5);
+	transition: opacity 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+.form__input:focus::placeholder {
+	opacity: 0;
+}
+
+.form__button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 15px;
+	background-color: #6532f8;
+	border-radius: 50%;
+	transition: opacity 0.3s ease-in-out, background-color 0.3s ease-in-out,
+		transform 0.3s ease-in-out;
+}
+@media (any-hover: hover) {
+	.form__button:hover {
+		opacity: 0.5;
+	}
+	.form__button:focus-visible {
+		background-color: aquamarine;
+	}
+}
+.form__button:active {
+	opacity: 0.5;
+	transform: scale(0.8);
+}
+
+/* ! СПИСОК */
+
+.films-app__list {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+
+	padding-bottom: 10px;
+	height: 410px;
+	overflow-y: auto;
+}
+.films-app__list::-webkit-scrollbar {
+	display: none;
+}
+
+.films-app__item {
+	position: relative;
+	display: flex;
+	align-items: center;
+	padding: 10px 25px;
+	background-color: #3a3939;
+	border-radius: 10px;
+	transition: opacity 0.3s ease-in-out;
+}
+.films-app__item_done {
+	opacity: 0.3;
+}
+.films-app__item_done .films-app__item-name {
+	text-decoration: line-through;
+}
+
+.films-app__item-label {
+	position: relative;
+	display: block;
+	line-height: 20px;
+	padding-left: 40px;
+	cursor: pointer;
+
+	transition-property: opacity, border-color, color;
+	transition-duration: 0.3s;
+	transition-timing-function: ease-in-out;
+}
+
+.films-app__item-check {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	top: 50%;
+	left: 0;
+	transform: translateY(-50%);
+	margin: 0;
+	border: 1px solid #f3f6f9;
+	border-radius: 50%;
+	cursor: pointer;
+}
+.films-app__item-check::after {
+	position: absolute;
+	content: '';
+	inset: 0;
+	display: block;
+	background-color: #6532f8;
+	border-radius: 50%;
+	opacity: 0;
+	transition: opacity 0.3s ease-in-out;
+}
+.films-app__item-check:checked::after {
+	opacity: 1;
+}
+@media (any-hover: hover) {
+	.films-app__item-check:focus-visible {
+		border-color: #6532f8;
+	}
+
+	.films-app__item-label:hover .films-app__item-name {
+		color: #6532f8;
+	}
+	.films-app__item-label:hover .films-app__item-check {
+		border-color: #6532f8;
+	}
+}
+
+.films-app__item-name {
+	line-height: 40px;
+	transition: text-decoration 0.3s ease-in-out;
+}
+
+.films-app__item-button {
+	position: absolute;
+	top: 50%;
+	right: 20px;
+	transform: translateY(-50%);
+	color: #f3f6f9;
+	transition: color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+@media (any-hover: hover) {
+	.films-app__item-button:hover,
+	.films-app__item-button:focus-visible {
+		color: red;
+	}
+}
+.films-app__item-button:active {
+	transform: translateY(-50%) scale(0.7);
+}
